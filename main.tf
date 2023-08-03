@@ -44,3 +44,11 @@ resource "aws_route" "igwrt" {
   gateway_id = aws_internet_gateway.igw.id
   destination_cidr_block = "0.0.0.0/0"
 }
+
+resource "aws_route" "ngwrt" {
+  count = length(local.all_private_subnet_ids)
+  route_table_id = local.all_private_subnet_ids[count.index]
+  nat_gateway_id = aws_nat_gateway.ngw.id
+  destination_cidr_block = "0.0.0.0/0"
+}
+
