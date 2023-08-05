@@ -69,3 +69,7 @@ resource "aws_route" "peering-connection-route-in-default-vpc" {
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
   destination_cidr_block = var.cidr_block
 }
+
+#output "subnets" {
+#  value = module.subnets
+#}
